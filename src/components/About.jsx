@@ -4,15 +4,15 @@ import { Code, Server, Database } from 'lucide-react';
 
 const About = () => {
   const stats = [
-    { value: '7+', label: 'Years Experience' },
-    { value: '50+', label: 'Projects Completed' },
-    { value: '15+', label: 'Tech Mastered' }
+    { value: '3+', label: 'Years Experience' },
+    { value: '15+', label: 'Projects Completed' },
+    { value: '10+', label: 'Tech Mastered' }
   ];
 
   const highlights = [
-    { icon: <Code size={24} />, title: 'Frontend', desc: 'React, Next.js, TypeScript' },
-    { icon: <Server size={24} />, title: 'Backend', desc: 'Node.js, Express.js' },
-    { icon: <Database size={24} />, title: 'Database', desc: 'MongoDB, Redis' },
+    { icon: <Code size={24} />, title: 'Frontend', desc: 'React, Next.js, Angular, TypeScript' },
+    { icon: <Server size={24} />, title: 'Backend', desc: 'Node.js, Express.js, Nest.js' },
+    { icon: <Database size={24} />, title: 'Database', desc: 'MongoDB, MySQL' },
   ];
 
   return (
