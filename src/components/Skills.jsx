@@ -1,26 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useApp } from '../context/AppContext';
 
 const skillCategories = [
   {
-    title: 'Frontend',
+    titleKey: 'skills.categories.frontend',
     skills: ['React', 'Next.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Redux', 'HTML5', 'CSS3']
   },
   {
-    title: 'Backend',
+    titleKey: 'skills.categories.backend',
     skills: ['Node.js', 'Express.js', 'NestJS', 'GraphQL', 'REST API', 'WebSockets']
   },
   {
-    title: 'Database',
+    titleKey: 'skills.categories.database',
     skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'Prisma', 'Mongoose']
   },
   {
-    title: 'Tools & DevOps',
+    titleKey: 'skills.categories.tools',
     skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Figma', 'Linux']
   }
 ];
 
 const Skills = () => {
+  const { t } = useApp();
+
   return (
     <section className="skills-section" id="skills">
       <div className="section-container">
@@ -30,7 +33,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Technical Arsenal
+          {t('skills.title')}
         </motion.h2>
         <motion.p 
           className="section-subtitle"
@@ -39,7 +42,7 @@ const Skills = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          A comprehensive suite of modern technologies and tools I utilize to craft premium digital experiences and scalable infrastructure.
+          {t('skills.subtitle')}
         </motion.p>
 
         <div className="skills-grid">
@@ -52,7 +55,7 @@ const Skills = () => {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
             >
-              <h3 className="category-title">{category.title}</h3>
+              <h3 className="category-title">{t(category.titleKey)}</h3>
               <div className="skills-list">
                 {category.skills.map((skill, sIdx) => (
                   <motion.div 
@@ -77,7 +80,7 @@ const Skills = () => {
         }
         .skills-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
           gap: 2rem;
         }
         .skill-category {
@@ -90,7 +93,7 @@ const Skills = () => {
           position: absolute;
           top: 0;
           left: 0;
-          width: 100%;
+          right: 0;
           height: 3px;
           background: linear-gradient(90deg, var(--accent-electric), var(--accent-primary));
           opacity: 0;
@@ -100,20 +103,21 @@ const Skills = () => {
           opacity: 1;
         }
         .category-title {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           margin-bottom: 1.5rem;
           color: var(--text-primary);
-          border-bottom: 1px solid rgba(255,255,255,0.1);
+          border-bottom: 1px solid var(--glass-border);
           padding-bottom: 1rem;
+          font-weight: 700;
         }
         .skills-list {
           display: flex;
           flex-wrap: wrap;
-          gap: 1rem;
+          gap: 0.8rem;
         }
         .skill-item {
           background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid var(--glass-border);
           padding: 8px 16px;
           border-radius: 30px;
           font-size: 0.95rem;
@@ -124,21 +128,25 @@ const Skills = () => {
           transition: var(--transition-smooth);
           cursor: default;
         }
+        [data-theme="light"] .skill-item {
+          background: rgba(15, 23, 42, 0.02);
+        }
         .skill-item:hover {
           color: white;
-          background: rgba(59, 130, 246, 0.1);
-          border-color: rgba(59, 130, 246, 0.5);
-          box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+          background: var(--accent-primary);
+          border-color: var(--accent-primary);
+          box-shadow: 0 0 15px var(--accent-glow);
         }
         .skill-dot {
           width: 6px;
           height: 6px;
           border-radius: 50%;
           background: var(--accent-light);
+          transition: var(--transition-smooth);
         }
         .skill-item:hover .skill-dot {
-          background: var(--accent-electric);
-          box-shadow: 0 0 8px var(--accent-electric);
+          background: white;
+          box-shadow: 0 0 8px white;
         }
       `}</style>
     </section>

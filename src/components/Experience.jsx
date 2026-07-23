@@ -1,56 +1,42 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Layout, Smartphone, Server, PieChart, ShoppingCart, Briefcase } from 'lucide-react';
-
-const experiences = [
-  {
-    role: 'Senior Full Stack Developer',
-    company: 'TechNova Solutions',
-    period: '2022 - Present',
-    description: 'Lead a team of 5 developers in architecting a high-traffic scalable SaaS platform using Next.js, Node.js, and MongoDB.'
-  },
-  {
-    role: 'Frontend Engineer',
-    company: 'PixelPerfect Agency',
-    period: '2019 - 2022',
-    description: 'Developed premium Awwwards-winning interactive websites. Spearheaded the adoption of React and Framer Motion across all client projects.'
-  },
-  {
-    role: 'Junior Web Developer',
-    company: 'Startup Incubator',
-    period: '2017 - 2019',
-    description: 'Built responsive single-page applications and RESTful APIs for emerging startups, focusing on performance and SEO.'
-  }
-];
-
-const services = [
-  { icon: <Layout size={28} />, title: 'Full Stack Web Dev', desc: 'End-to-end development using the MERN stack with scalable architectures.' },
-  { icon: <Smartphone size={28} />, title: 'Responsive UI Dev', desc: 'Pixel-perfect, modern, and fluid interfaces that look stunning on any device.' },
-  { icon: <Server size={28} />, title: 'REST & GraphQL APIs', desc: 'Robust and secure backend services tailored for complex data requirements.' },
-  { icon: <PieChart size={28} />, title: 'Dashboard Systems', desc: 'Complex data visualization and analytics dashboards for enterprise.' },
-  { icon: <ShoppingCart size={28} />, title: 'E-commerce Dev', desc: 'High-conversion online stores with secure payment gateways integration.' },
-  { icon: <Briefcase size={28} />, title: 'Portfolio Websites', desc: 'Premium, interactive personal brands to showcase your work globally.' },
-];
+import { useApp } from '../context/AppContext';
 
 const Experience = () => {
+  const { t } = useApp();
+
+  const serviceIcons = [
+    <Layout size={26} />,
+    <Smartphone size={26} />,
+    <Server size={26} />,
+    <PieChart size={26} />,
+    <ShoppingCart size={26} />,
+    <Briefcase size={26} />
+  ];
+
+  const experiences = t('experience.items');
+  const services = t('experience.services');
+
   return (
     <section className="experience-section" id="experience">
       <div className="section-container">
         
         <div className="exp-services-grid">
           
+          {/* Experience Timeline */}
           <div className="experience-timeline">
             <motion.h2 
-              className="section-title text-gradient" style={{ textAlign: 'left' }}
+              className="section-title text-gradient heading-start"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              Experience
+              {t('experience.title')}
             </motion.h2>
             
             <div className="timeline-container">
-              {experiences.map((exp, idx) => (
+              {Array.isArray(experiences) && experiences.map((exp, idx) => (
                 <motion.div 
                   key={idx}
                   className="timeline-item"
@@ -71,18 +57,19 @@ const Experience = () => {
             </div>
           </div>
 
+          {/* Services Offered */}
           <div className="services-container">
             <motion.h2 
-              className="section-title text-gradient" style={{ textAlign: 'left' }}
+              className="section-title text-gradient heading-start"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              Services
+              {t('experience.servicesTitle')}
             </motion.h2>
 
             <div className="services-grid">
-              {services.map((service, idx) => (
+              {Array.isArray(services) && services.map((service, idx) => (
                 <motion.div 
                   key={idx}
                   className="service-card glass-card"
@@ -91,7 +78,7 @@ const Experience = () => {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
                 >
-                  <div className="service-icon">{service.icon}</div>
+                  <div className="service-icon">{serviceIcons[idx] || <Layout size={26} />}</div>
                   <h4 className="service-title">{service.title}</h4>
                   <p className="service-desc">{service.desc}</p>
                 </motion.div>
@@ -112,15 +99,18 @@ const Experience = () => {
           grid-template-columns: 1fr 1fr;
           gap: 4rem;
         }
+        .heading-start {
+          text-align: start;
+        }
         .timeline-container {
           position: relative;
-          padding-left: 2rem;
+          padding-inline-start: 2rem;
           margin-top: 2rem;
         }
         .timeline-container::before {
           content: '';
           position: absolute;
-          left: 0;
+          inset-inline-start: 0;
           top: 0;
           height: 100%;
           width: 2px;
@@ -128,38 +118,44 @@ const Experience = () => {
         }
         .timeline-item {
           position: relative;
-          margin-bottom: 3rem;
+          margin-bottom: 2.5rem;
         }
         .timeline-dot {
           position: absolute;
-          left: -2.4rem;
-          top: 0;
-          width: 16px;
-          height: 16px;
+          inset-inline-start: -2.4rem;
+          top: 4px;
+          width: 15px;
+          height: 15px;
           border-radius: 50%;
           background: var(--bg-primary);
           border: 3px solid var(--accent-primary);
           box-shadow: 0 0 10px var(--accent-glow);
+          z-index: 2;
         }
         .timeline-content {
           padding: 1.5rem;
+          text-align: start;
         }
         .timeline-period {
           font-size: 0.9rem;
-          font-weight: 600;
+          font-weight: 700;
           letter-spacing: 1px;
           display: block;
           margin-bottom: 0.5rem;
         }
+        html[lang="ar"] .timeline-period {
+          letter-spacing: 0;
+        }
         .timeline-role {
-          font-size: 1.4rem;
+          font-size: 1.3rem;
           color: var(--text-primary);
           margin-bottom: 0.2rem;
+          font-weight: 700;
         }
         .timeline-company {
-          font-size: 1rem;
+          font-size: 0.95rem;
           color: var(--text-secondary);
-          font-weight: 400;
+          font-weight: 500;
           margin-bottom: 1rem;
         }
         .timeline-desc {
@@ -180,13 +176,14 @@ const Experience = () => {
         .service-card {
           padding: 1.5rem;
           transition: var(--transition-smooth);
+          text-align: start;
         }
         .service-icon {
           color: var(--accent-light);
           margin-bottom: 1rem;
           background: rgba(59, 130, 246, 0.1);
-          width: 50px;
-          height: 50px;
+          width: 46px;
+          height: 46px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -202,6 +199,7 @@ const Experience = () => {
           font-size: 1.1rem;
           margin-bottom: 0.5rem;
           color: var(--text-primary);
+          font-weight: 700;
         }
         .service-desc {
           color: var(--text-secondary);

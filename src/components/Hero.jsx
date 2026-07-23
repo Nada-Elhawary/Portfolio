@@ -1,33 +1,94 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import { FaReact, FaNodeJs, FaAngular } from 'react-icons/fa';
 import { SiMongodb, SiExpress } from 'react-icons/si';
+import { useApp } from '../context/AppContext';
 
 const Hero = () => {
+  const { t, language, isRtl } = useApp();
+  const [roleText, setRoleText] = useState('');
+  const [roleIdx, setRoleIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // High-end titles for typewriter effect
+  const roles = language === 'en' 
+    ? ["Full Stack MEARN Developer", "Creative UI/UX Designer", "Scalable Systems Architect"]
+    : ["مطورة ويب متكامل MEARN", "مصممة واجهات وتجربة مستخدم", "مهندسة أنظمة برمجية متكاملة"];
+
+  useEffect(() => {
+    // Reset index when language changes
+    setRoleIdx(0);
+    setCharIdx(0);
+    setRoleText('');
+    setIsDeleting(false);
+  }, [language]);
+
+  useEffect(() => {
+    const currentRole = roles[roleIdx];
+    let timer;
+
+    if (isDeleting) {
+      timer = setTimeout(() => {
+        setRoleText(currentRole.substring(0, charIdx - 1));
+        setCharIdx(prev => prev - 1);
+      }, 40); // backspacing speed
+    } else {
+      timer = setTimeout(() => {
+        setRoleText(currentRole.substring(0, charIdx + 1));
+        setCharIdx(prev => prev + 1);
+      }, 80); // typing speed
+    }
+
+    if (!isDeleting && charIdx === currentRole.length) {
+      // Pause at full word
+      timer = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && charIdx === 0) {
+      setIsDeleting(false);
+      setRoleIdx((prev) => (prev + 1) % roles.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [charIdx, isDeleting, roleIdx, language]);
+
   return (
     <section className="hero-section" id="home">
       <div className="bg-glow"></div>
-      <div className="section-container flex items-center justify-between">
+      <div className="section-container">
 
+        {/* Text content */}
         <div className="hero-content">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="greeting text-gradient-blue">Hello, I'm <br /> Nada Elhawary</span>
+            <span className="greeting text-gradient-blue">
+              {t('hero.greeting')}
+            </span>
           </motion.div>
 
           <motion.h1
-            className="hero-title"
+            className="hero-name"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Full Stack
-            <span className="text-gradient"> MEARN Developer</span>
+            {t('hero.name')}
           </motion.h1>
+
+          <motion.div
+            className="typewriter-container"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <h2 className="hero-role">
+              <span className="text-gradient">{roleText}</span>
+              <span className="typewriter-cursor">|</span>
+            </h2>
+          </motion.div>
 
           <motion.p
             className="hero-subtitle"
@@ -35,7 +96,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Crafting elegant, high-performance web applications with a focus on modern UI/UX and scalable backend architectures. I turn complex problems into beautiful digital solutions.
+            {t('hero.intro')}
           </motion.p>
 
           <motion.div
@@ -45,14 +106,22 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <a href="#projects" className="btn-primary">
-              View Projects <ArrowRight size={18} />
+              {t('hero.ctaProjects')} 
+              <motion.span
+                animate={{ x: isRtl ? [0, -5, 0] : [0, 5, 0] }}
+                transition={{ repeat: Infinity, duration: 1.2 }}
+                style={{ display: 'inline-flex', alignItems: 'center' }}
+              >
+                <ArrowRight size={18} style={{ transform: isRtl ? 'rotate(180deg)' : 'none' }} />
+              </motion.span>
             </a>
             <a href="#contact" className="btn-secondary">
-              Hire Me
+              {t('hero.ctaContact')}
             </a>
           </motion.div>
         </div>
 
+        {/* Profile Image & Badges */}
         <motion.div
           className="hero-image-container"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -60,12 +129,8 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
         >
           <div className="image-wrapper glass">
-            {/* Using a placeholder for profile, but styled elegantly */}
             <div className="profile-placeholder">
-              {/* <div className="abstract-shape shape-1"></div>
-              <div className="abstract-shape shape-2"></div>
-              <div className="abstract-shape shape-3"></div> */}
-              <img src="/me.JPG" className="profile-photo" alt="Personal Photo" />
+              <img src="/me.JPG" className="profile-photo" alt={t('hero.name')} />
             </div>
 
             {/* Floating Badges */}
@@ -115,33 +180,64 @@ const Hero = () => {
           display: flex;
           align-items: center;
           position: relative;
-          padding-top: 80px;
+          padding-top: 100px;
+          padding-bottom: 50px;
         }
         .hero-section .section-container {
           display: flex;
           align-items: center;
           justify-content: space-between;
           width: 100%;
-          gap: 2rem;
+          gap: 4rem;
         }
         .hero-content {
-          flex: 1;
-          max-width: 600px;
+          flex: 1.2;
+          max-width: 650px;
+          text-align: start;
         }
         .greeting {
           font-family: 'Outfit', sans-serif;
-          font-weight: 600;
+          font-weight: 700;
           font-size: 1.2rem;
           letter-spacing: 2px;
           text-transform: uppercase;
           margin-bottom: 1rem;
           display: inline-block;
         }
-        .hero-title {
-          font-size: 4.5rem;
+        html[lang="ar"] .greeting {
+          font-family: 'Cairo', sans-serif;
+          letter-spacing: 0;
+        }
+        .hero-name {
+          font-size: 4rem;
           line-height: 1.1;
+          font-weight: 800;
+          margin-bottom: 0.5rem;
+          font-family: 'Outfit', sans-serif;
+        }
+        html[lang="ar"] .hero-name {
+          font-family: 'Cairo', sans-serif;
+          font-size: 3.8rem;
+        }
+        .typewriter-container {
+          min-height: 50px;
           margin-bottom: 1.5rem;
-          letter-spacing: -1px;
+          display: flex;
+          align-items: center;
+        }
+        .hero-role {
+          font-size: 2.2rem;
+          font-weight: 700;
+          font-family: 'Outfit', sans-serif;
+        }
+        html[lang="ar"] .hero-role {
+          font-family: 'Cairo', sans-serif;
+          font-size: 2rem;
+        }
+        .typewriter-cursor {
+          animation: blink 0.75s step-end infinite;
+          color: var(--accent-light);
+          margin-inline-start: 4px;
         }
         .hero-subtitle {
           font-size: 1.1rem;
@@ -151,7 +247,7 @@ const Hero = () => {
         }
         .hero-ctas {
           display: flex;
-          gap: 1rem;
+          gap: 1.2rem;
         }
         .hero-image-container {
           flex: 1;
@@ -160,26 +256,23 @@ const Hero = () => {
           position: relative;
         }
         .image-wrapper {
-          width: 450px;
-          height: 450px;
+          width: 420px;
+          height: 420px;
           border-radius: 50%;
           position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
-          /* background: linear-gradient(135deg, rgba(30,41,59,0.5) 0%, rgba(15,23,42,0.5) 100%); */
-          /* box-shadow: 0 0 50px rgba(59, 130, 246, 0.2); */
         }
         .profile-placeholder {
-          width: 90%;
-          height: 90%;
+          width: 92%;
+          height: 92%;
           border-radius: 50%;
-          /* background: var(--bg-primary); */
-          /* position: relative; */
           overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
+          border: 2px solid var(--glass-border);
         }
         .profile-photo {
           width: 100%;
@@ -187,67 +280,67 @@ const Hero = () => {
           border-radius: 50%;
           object-fit: cover;
           object-position: center;
+          transition: transform 0.5s ease;
         }
-        .abstract-shape {
-          position: absolute;
-          filter: blur(40px);
-          opacity: 0.6;
-        }
-        .shape-1 {
-          width: 200px;
-          height: 200px;
-          background: var(--accent-primary);
-          top: -50px;
-          left: -50px;
-        }
-        .shape-2 {
-          width: 250px;
-          height: 250px;
-          background: var(--accent-electric);
-          bottom: -50px;
-          right: -50px;
-        }
-        .shape-3 {
-          width: 150px;
-          height: 150px;
-          background: #4f46e5;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+        .profile-photo:hover {
+          transform: scale(1.03);
         }
         .floating-badge {
           position: absolute;
-          padding: 10px 20px;
-          border-radius: 30px;
-          font-weight: 600;
-          font-family: 'Outfit', sans-serif;
-          font-size: 0.9rem;
-          letter-spacing: 1px;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: var(--glass-shadow);
         }
-        .badge-react { top: 10%; left: -5%; color: #61dafb; border-color: rgba(97, 218, 251, 0.3); }
-        .badge-node { bottom: 15%; right: -5%; color: #339933; border-color: rgba(51, 153, 51, 0.3); }
-        .badge-mongo { bottom: 5%; left: 5%; color: #47a248; border-color: rgba(71, 162, 72, 0.3); }
-        .badge-express { top: 25%; right: -8%; color: #ffffff; border-color: rgba(255, 255, 255, 0.3); }
-        .badge-angular { top: -5%; right: 25%; color: #dd0031; border-color: rgba(221, 0, 49, 0.3); }
+        .badge-react { top: 10%; inset-inline-start: -5%; color: #61dafb; border-color: rgba(97, 218, 251, 0.3); }
+        .badge-node { bottom: 15%; inset-inline-end: -5%; color: #339933; border-color: rgba(51, 153, 51, 0.3); }
+        .badge-mongo { bottom: 5%; inset-inline-start: 5%; color: #47a248; border-color: rgba(71, 162, 72, 0.3); }
+        .badge-express { top: 25%; inset-inline-end: -8%; color: var(--text-primary); border-color: var(--glass-border); }
+        .badge-angular { top: -5%; inset-inline-end: 25%; color: #dd0031; border-color: rgba(221, 0, 49, 0.3); }
+
+        @keyframes blink {
+          from, to { color: transparent }
+          50% { color: var(--accent-light); }
+        }
 
         @media (max-width: 968px) {
-          .section-container {
+          .hero-section {
+            padding-top: 120px;
+          }
+          .hero-section .section-container {
             flex-direction: column-reverse;
             text-align: center;
+            gap: 3rem;
           }
           .hero-content {
-            margin-top: 3rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
           }
-          .hero-title {
+          .hero-name {
             font-size: 3rem;
+          }
+          html[lang="ar"] .hero-name {
+            font-size: 2.8rem;
+          }
+          .hero-role {
+            font-size: 1.8rem;
           }
           .image-wrapper {
             width: 300px;
             height: 300px;
+          }
+          .floating-badge {
+            width: 42px;
+            height: 42px;
+          }
+          .floating-badge svg {
+            width: 20px;
+            height: 20px;
           }
         }
       `}</style>
