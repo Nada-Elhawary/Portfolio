@@ -82,6 +82,17 @@ const Projects = () => {
                       <span key={tIdx} className="tech-tag">{tech}</span>
                     ))}
                   </div>
+                  {/* Always-visible buttons for touch devices */}
+                  <div className="card-actions">
+                    <a href={meta.liveLink} className="card-action-btn" target="_blank" rel="noreferrer">
+                      <ExternalLink size={16} />
+                      {t('projects.liveDemo')}
+                    </a>
+                    <a href={meta.githubLink} className="card-action-btn" target="_blank" rel="noreferrer">
+                      <Code size={16} />
+                      {t('projects.sourceCode')}
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             );
@@ -91,7 +102,7 @@ const Projects = () => {
 
       <style>{`
         .projects-section {
-          padding-top: 100px;
+          padding-top: 50px;
           position: relative;
         }
         .projects-grid {
@@ -214,6 +225,11 @@ const Projects = () => {
           border-color: rgba(29, 78, 216, 0.1);
         }
 
+        /* ── Touch-device action buttons (hidden on desktop) ── */
+        .card-actions {
+          display: none;
+        }
+
         @media (max-width: 968px) {
           .project-card, .project-card:nth-child(even) {
             flex-direction: column;
@@ -224,6 +240,48 @@ const Projects = () => {
           }
           .project-content {
             padding: 2rem;
+          }
+
+          /* Show always-visible action buttons */
+          .card-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+          }
+          .card-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 18px;
+            border-radius: 24px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.35);
+            color: var(--accent-light);
+            background: rgba(59, 130, 246, 0.08);
+            transition: var(--transition-smooth);
+          }
+          html[lang="ar"] .card-action-btn {
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+          }
+          .card-action-btn:hover,
+          .card-action-btn:active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            box-shadow: 0 0 12px var(--accent-glow);
+          }
+          [data-theme="light"] .card-action-btn {
+            border-color: rgba(29, 78, 216, 0.25);
+            color: var(--accent-primary);
+            background: rgba(29, 78, 216, 0.05);
+          }
+
+          /* Hide the hover overlay on touch screens — no hover available */
+          .project-overlay {
+            display: none;
           }
         }
       `}</style>

@@ -118,7 +118,7 @@ ul {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
-  border: 1px solid var(--glass-border);
+  /* border: 1px solid var(--glass-border); */
   box-shadow: var(--glass-shadow);
   transition: var(--theme-transition);
 }
@@ -211,7 +211,17 @@ html[lang="ar"] .btn-secondary {
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 24px;
+  padding: 25px 24px;
+}
+
+/* prevent any child from blowing out the viewport width */
+@media (max-width: 640px) {
+  .section-container {
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 .section-title {

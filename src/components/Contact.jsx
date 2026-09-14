@@ -204,8 +204,8 @@ const Contact = () => {
 
       <style>{`
         .contact-section {
-          padding-top: 100px;
-          padding-bottom: 80px;
+          padding-top: 50px;
+          padding-bottom: 30px;
           position: relative;
         }
         .contact-grid {

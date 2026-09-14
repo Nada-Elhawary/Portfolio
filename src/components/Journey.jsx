@@ -138,13 +138,9 @@ const Journey = () => {
           {journey.tagline}
         </motion.p>
 
-        {/* timeline track */}
-        <div className="jrn-track" role="list">
+        {/* ── desktop/tablet alternating track ── */}
+        <div className="jrn-track jrn-track--desktop" role="list">
           {milestones.map((m, i) => {
-            /*
-              LTR: even i → card on left, odd → card on right
-              RTL: mirror (even → right, odd → left)
-            */
             const isEven  = i % 2 === 0;
             const cardSide = isRtl
               ? (isEven ? 'right' : 'left')
@@ -153,39 +149,25 @@ const Journey = () => {
 
             return (
               <React.Fragment key={i}>
-                {/* ── milestone row ── */}
-                <div
-                  className={`jrn-row jrn-row--${cardSide}`}
-                  role="listitem"
-                >
-                  {/* LEFT slot */}
+                <div className={`jrn-row jrn-row--${cardSide}`} role="listitem">
                   <div className="jrn-slot jrn-slot--left">
                     {cardSide === 'left' && (
                       <MilestoneCard milestone={m} index={i} side="left" />
                     )}
                   </div>
-
-                  {/* CENTRE: dot */}
                   <div className="jrn-centre-col">
                     <CentreDot index={i} isCurrent={m.isCurrent} />
                   </div>
-
-                  {/* RIGHT slot */}
                   <div className="jrn-slot jrn-slot--right">
                     {cardSide === 'right' && (
                       <MilestoneCard milestone={m} index={i} side="right" />
                     )}
                   </div>
                 </div>
-
-                {/* ── S-curve connector between rows ── */}
                 {!isLast && (
                   <div className="jrn-conn-row" aria-hidden="true">
-                    {/* spacer left */}
                     <div className="jrn-slot" />
-                    {/* curve */}
                     <Connector fromSide={cardSide} />
-                    {/* spacer right */}
                     <div className="jrn-slot" />
                   </div>
                 )}
@@ -194,13 +176,59 @@ const Journey = () => {
           })}
         </div>
 
+        {/* ── mobile single-column track (separate DOM, no CSS fighting) ── */}
+        <div className="jrn-track jrn-track--mobile" role="list">
+          {milestones.map((m, i) => (
+            <div key={i} className="jrn-mob-item" role="listitem">
+              {/* rail */}
+              <div className="jrn-mob-rail" aria-hidden="true">
+                <div className={`jrn-dot${m.isCurrent ? ' jrn-dot--current' : ''}`}>
+                  <div className="jrn-dot-ring" />
+                  <div className="jrn-dot-core" />
+                </div>
+                {i < milestones.length - 1 && (
+                  <div className="jrn-mob-line" />
+                )}
+              </div>
+              {/* card */}
+              <motion.div
+                className="jrn-mob-card-wrap"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.45, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <article className={`jrn-card ${m.isCurrent ? 'jrn-card--current' : ''}`}>
+                  <span className="jrn-year">{m.year}</span>
+                  <h3 className="jrn-title">{m.title}</h3>
+                  {m.description.split('\n\n').map((para, pi) => (
+                    <p key={pi} className="jrn-desc">
+                      <WithHighlight text={para} word={m.highlight} />
+                    </p>
+                  ))}
+                  {m.closing && (
+                    <p className="jrn-closing">
+                      {m.closing.split('\n').map((line, li) => (
+                        <React.Fragment key={li}>
+                          {li > 0 && <br />}
+                          {line}
+                        </React.Fragment>
+                      ))}
+                    </p>
+                  )}
+                </article>
+              </motion.div>
+            </div>
+          ))}
+        </div>
+
       </div>
 
       <style>{`
 
         /* ─── section wrapper ─────────────────────────────────────── */
         .jrn-section {
-          padding-top: 60px;
+          padding-top: 50px;
           position: relative;
         }
 
@@ -217,6 +245,9 @@ const Journey = () => {
           max-width: 880px;
           margin: 0 auto;
         }
+
+        /* mobile track hidden on desktop/tablet */
+        .jrn-track--mobile { display: none; }
 
         /* ─── milestone row ───────────────────────────────────────── */
         .jrn-row {
@@ -273,7 +304,7 @@ const Journey = () => {
           filter: blur(3px);
         }
 
-        /* ─── dot ─────────────────────────────────────────────────── */
+        /* ─── dot (shared by both tracks) ────────────────────────── */
         .jrn-dot {
           position: relative;
           width: 22px;
@@ -333,7 +364,7 @@ const Journey = () => {
           .jrn-dot--current .jrn-dot-core { animation: none; }
         }
 
-        /* ─── card ────────────────────────────────────────────────── */
+        /* ─── card (shared by both tracks) ───────────────────────── */
         .jrn-card {
           width: 100%;
           background: var(--card-bg-gradient);
@@ -366,7 +397,7 @@ const Journey = () => {
           box-shadow: 0 10px 28px rgba(29,78,216,.09);
         }
 
-        /* ─── card typography ─────────────────────────────────────── */
+        /* ─── card typography (shared) ────────────────────────────── */
         .jrn-year {
           display: inline-block;
           font-size: 0.69rem;
@@ -444,84 +475,63 @@ const Journey = () => {
 
         /* ─── Mobile ──────────────────────────────────────────────── */
         @media (max-width: 640px) {
+          .jrn-section { padding-bottom: 3rem; }
 
-          /* ── row: dot rail on LTR-left / RTL-right, card fills rest ── */
-          .jrn-row,
-          .jrn-conn-row {
-            grid-template-columns: 32px 1fr;
-          }
+          /* swap which track is visible */
+          .jrn-track--desktop { display: none; }
+          .jrn-track--mobile  { display: block; max-width: 100%; }
 
-          /* hide the right spacer slot entirely */
-          .jrn-row > .jrn-slot--right,
-          .jrn-conn-row > .jrn-slot:last-child {
-            display: none;
-          }
-
-          /* dot column */
-          .jrn-centre-col {
-            grid-column: 1;
-            align-items: flex-start;
-            padding-top: 5px;
+          /* ── mobile single-column item ── */
+          .jrn-mob-item {
+            display: grid;
+            grid-template-columns: 28px 1fr;
+            gap: 0 0.75rem;
+            align-items: stretch;
           }
 
-          /* both card slots occupy col 2 */
-          .jrn-slot--left,
-          .jrn-slot--right {
-            grid-column: 2;
-            padding: 0 0 0 0.5rem;
-            justify-content: flex-start;
+          /* rail: dot on top, line below filling remaining height */
+          .jrn-mob-rail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 3px;
+          }
+          .jrn-mob-line {
+            width: 2px;
+            flex: 1;
+            min-height: 16px;
+            margin-top: 4px;
+            background: linear-gradient(to bottom, var(--accent-primary), transparent);
+            opacity: 0.35;
           }
 
-          /* connector becomes a simple vertical line in col 1 */
-          .jrn-conn-row > .jrn-connector {
-            grid-column: 1;
+          /* card wrapper fills column 2 */
+          .jrn-mob-card-wrap {
+            padding-bottom: 1.25rem;
           }
-          .jrn-conn-row > .jrn-slot:first-child {
-            display: none;
-          }
-          .jrn-connector svg {
-            /* override the S-curve: draw a straight vertical line */
+          .jrn-mob-item:last-child .jrn-mob-card-wrap {
+            padding-bottom: 0;
           }
 
-          /* card */
+          /* card sizing on mobile */
           .jrn-card {
             padding: 1rem 1.1rem;
-            margin-bottom: 0;
           }
-
-          /* RTL mobile: rail on right */
-          html[lang="ar"] .jrn-row,
-          html[lang="ar"] .jrn-conn-row {
-            grid-template-columns: 1fr 32px;
-          }
-          html[lang="ar"] .jrn-centre-col {
-            grid-column: 2;
-          }
-          html[lang="ar"] .jrn-row > .jrn-slot--left,
-          html[lang="ar"] .jrn-row > .jrn-slot--right {
-            grid-column: 1;
-            padding: 0 0.5rem 0 0;
-            justify-content: flex-end;
-          }
-          html[lang="ar"] .jrn-row > .jrn-slot--left {
-            display: flex;
-          }
-          html[lang="ar"] .jrn-row > .jrn-slot--right {
-            display: flex;
-          }
-          /* hide right spacer for RTL */
-          html[lang="ar"] .jrn-conn-row > .jrn-slot:first-child {
-            display: none;
-          }
-          html[lang="ar"] .jrn-conn-row > .jrn-slot:last-child {
-            display: none;
-          }
-          html[lang="ar"] .jrn-conn-row > .jrn-connector {
-            grid-column: 2;
-          }
-
           .jrn-title { font-size: 0.95rem; }
           .jrn-desc  { font-size: 0.855rem; }
+
+          /* RTL mobile: rail on the right */
+          html[lang="ar"] .jrn-mob-item {
+            grid-template-columns: 1fr 28px;
+          }
+          html[lang="ar"] .jrn-mob-rail {
+            grid-column: 2;
+            grid-row: 1;
+          }
+          html[lang="ar"] .jrn-mob-card-wrap {
+            grid-column: 1;
+            grid-row: 1;
+          }
         }
       `}</style>
     </section>

@@ -199,7 +199,7 @@ const Navbar = () => {
         .navbar.scrolled {
           padding: 12px 0;
           border-radius: 0 0 20px 20px;
-          border-bottom: 1px solid var(--glass-border);
+          // border-bottom: 1px solid var(--glass-border);
         }
         .nav-container {
           max-width: 1200px;

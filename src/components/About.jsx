@@ -82,7 +82,7 @@ const About = () => {
 
       <style>{`
         .about-section {
-          padding-top: 100px;
+          padding-top: 50px;
           position: relative;
         }
         .stats-row {

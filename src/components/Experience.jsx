@@ -97,7 +97,7 @@ const Experience = () => {
 
       <style>{`
         .experience-section {
-          padding-top: 100px;
+          padding-top: 50px;
           position: relative;
         }
 

@@ -118,14 +118,14 @@ const Hero = () => {
             <a
               href="/Nada_Elhawary_CV (2).pdf"
               download="Nada-Elhawary-CV.pdf"
-              className="btn-primary hero-cv-btn"
+              className="btn-secondary hero-cv-btn"
             >
               <Download size={17} />
               {t('hero.ctaDownloadCV')}
             </a>
-            <a href="#contact" className="btn-secondary">
+            {/* <a href="#contact" className="btn-secondary">
               {t('hero.ctaContact')}
-            </a>
+            </a> */}
           </motion.div>
         </div>
 
@@ -262,6 +262,28 @@ const Hero = () => {
           display: inline-flex;
           align-items: center;
           gap: 7px;
+        }
+
+        /* ── Mobile / Tablet: keep both buttons side-by-side ── */
+        @media (max-width: 968px) {
+          .hero-ctas {
+            flex-wrap: nowrap;
+            gap: 0.85rem;
+            justify-content: center;
+          }
+          .hero-ctas .btn-primary,
+          .hero-ctas .btn-secondary {
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            gap: 6px;
+          }
+        }
+        @media (max-width: 420px) {
+          .hero-ctas .btn-primary,
+          .hero-ctas .btn-secondary {
+            padding: 9px 14px;
+            font-size: 0.83rem;
+          }
         }
         .hero-image-container {
           flex: 1;

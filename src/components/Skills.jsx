@@ -5,7 +5,7 @@ import { useApp } from '../context/AppContext';
 const skillCategories = [
   {
     titleKey: 'skills.categories.frontend',
-    skills: ['React', 'Next.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Redux', 'HTML5', 'CSS3']
+    skills: ['React', 'Next.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Redux']
   },
   {
     titleKey: 'skills.categories.backend',
@@ -13,7 +13,7 @@ const skillCategories = [
   },
   {
     titleKey: 'skills.categories.database',
-    skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'Prisma', 'Mongoose']
+    skills: ['MongoDB', 'Mongoose', 'MongoDB Atlas']
   },
   {
     titleKey: 'skills.categories.tools',
@@ -75,7 +75,7 @@ const Skills = () => {
 
       <style>{`
         .skills-section {
-          padding-top: 100px;
+          padding-top: 50px;
           position: relative;
         }
         .skills-grid {

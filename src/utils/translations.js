@@ -52,14 +52,14 @@ export const translations = {
           {
             year: "2026",
             title: "From Frontend to Full-Stack",
-            description: "ITI became one of the most important milestones in my journey. During six months of intensive learning and teamwork, I experienced an environment closer to real-world development and expanded my knowledge from frontend to backend and AI.\n\nEduGenie was one of the biggest challenges I worked on, where I collaborated with my team to build a real full-stack product using Angular, NestJS, and MongoDB, with AI-powered features.",
-            highlight: "EduGenie"
+            description: "ITI became one of the most important milestones in my journey. During six months of intensive learning and teamwork, I experienced an environment closer to real-world development and expanded my knowledge from frontend to backend and AI.",
+            highlight: "ITI"
           },
           {
             year: "Today",
             title: "Still Building",
             description: "Today, I'm at the beginning of a new chapter, continuing to grow as a Full-Stack Web Developer, constantly learning, building new projects, and turning ideas into experiences people can actually use.",
-            closing: "My journey isn't over...\n\nI'm just writing the next chapter.",
+            closing: "My journey isn't over...\nI'm just writing the next chapter.",
             isCurrent: true
           }
         ]
@@ -70,7 +70,7 @@ export const translations = {
         { value: "10+", label: "Tech Mastered" }
       ],
       highlights: [
-        { title: "Frontend", desc: "React, Next.js, Angular, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS" },
+        { title: "Frontend", desc: "React, Next.js, Angular, TypeScript, JavaScript" },
         { title: "Backend", desc: "Node.js, Express.js, Nest.js, GraphQL" },
         { title: "Database", desc: "MongoDB, MongoDB Atlas" }
       ]
@@ -93,18 +93,18 @@ export const translations = {
       items: [
         {
           title: "EduGenie",
-          description: "EduGenie is an AI-powered e-learning platform built to provide a smarter and more personalized learning experience. The platform brings together course management, interactive quizzes, progress tracking, certifications, and AI-powered learning features in one integrated system.\n\nDeveloped as a full-stack team project, EduGenie was designed to turn traditional online learning into a more engaging and adaptive experience.",
-          tech: ["Angular 20", "Next.js", "NestJS", "TypeScript", "MongoDB", "Cloudinary", "Stripe", "AI/RAG"]
+          description: "AI-powered e-learning platform offering personalized learning, course management, quizzes, progress tracking, and AI-powered features. Built as a full-stack team project.",
+          tech: ["Angular 20", "Next.js", "NestJS", "MongoDB", "AI/RAG"]
         },
         {
           title: "NexusBooks",
-          description: "NexusBooks is a modern book rental platform designed to make discovering, renting, and managing books simple and seamless. It includes user authentication, book browsing, rental management, and an admin dashboard.",
-          tech: ["Next.js", "Express.js", "Node.js", "MongoDB", "Mongoose", "JWT", "REST API"]
+          description: "A modern book rental platform for discovering, renting, and managing books, with user authentication and an admin dashboard. Built as a full-stack project.",
+          tech: ["Next.js", "Express.js", "Node.js", "MongoDB"]
         },
         {
           title: "Ada Store — E-Commerce",
-          description: "Ada Store is a modern e-commerce frontend built with Angular, featuring product browsing, search, authentication, and a responsive shopping experience.",
-          tech: ["Angular 20", "TypeScript", "Tailwind CSS", "REST API", "Angular Signals"]
+          description: "A modern e-commerce frontend built with Angular, featuring product browsing, search, authentication, and a responsive shopping experience.",
+          tech: ["Angular 20", "Tailwind CSS", "Angular Signals"]
         }
       ]
     },
@@ -240,8 +240,8 @@ export const translations = {
           {
             year: "2026",
             title: "من الـFrontend إلى الـFull-Stack",
-            description: "كانت ITI واحدة من أهم محطات رحلتي. خلال ستة أشهر من التعلم والعمل الجماعي، خضت تجربة أقرب لبيئة العمل الحقيقية، وتوسعت معرفتي من الـFrontend إلى الـBackend والـAI.\n\nوكان EduGenie من أكبر التحديات التي خضتها، حيث عملت مع فريقي على بناء منتج Full-Stack حقيقي باستخدام Angular وNestJS وMongoDB، مع دمج تقنيات الذكاء الاصطناعي.",
-            highlight: "EduGenie"
+            description: "كانت ITI واحدة من أهم محطات رحلتي. خلال ستة أشهر من التعلم والعمل الجماعي، خضت تجربة أقرب لبيئة العمل الحقيقية، وتوسعت معرفتي من الـFrontend إلى الـBackend والـAI.",
+            highlight: "ITI"
           },
           {
             year: "اليوم",
@@ -281,18 +281,18 @@ export const translations = {
       items: [
         {
           title: "منصة جن التعلم الإلكترونية الذكية",
-          description: "EduGenie هي منصة تعليم إلكتروني مدعومة بالذكاء الاصطناعي، تم تطويرها لتقديم تجربة تعلم أكثر ذكاءً وتخصيصًا. تجمع المنصة بين إدارة الكورسات، والاختبارات التفاعلية، ومتابعة التقدم، والشهادات، وميزات التعلم المدعومة بالذكاء الاصطناعي في نظام متكامل.\n\nتم تطوير EduGenie كمشروع Full-Stack جماعي، بهدف تحويل تجربة التعلم الإلكتروني التقليدية إلى تجربة أكثر تفاعلية ومرونة وتكيفًا مع احتياجات المتعلم.",
-          tech: ["Angular 20", "Next.js", "NestJS", "TypeScript", "MongoDB", "Cloudinary", "Stripe", "AI/RAG"]
+          description: "منصة تعليم إلكتروني مدعومة بالذكاء الاصطناعي، تقدم تجربة تعلم مخصصة مع إدارة الكورسات والاختبارات ومتابعة التقدم وميزات AI. تم تطويرها كمشروع Full-Stack جماعي.",
+          tech: ["Angular 20", "Next.js", "NestJS", "MongoDB", "AI/RAG"]
         },
         {
           title: "منصة نكسس لتأجير وإدارة الكتب",
-          description: "NexusBooks هي منصة حديثة لتأجير الكتب، مصممة لتوفير تجربة سهلة وسلسة لاكتشاف الكتب واستئجارها وإدارتها. تتضمن تسجيل دخول المستخدمين، وتصفح الكتب، وإدارة عمليات التأجير، ولوحة تحكم للـAdmin.",
-          tech: ["Next.js", "Express.js", "Node.js", "MongoDB", "Mongoose", "JWT", "REST API"]
+          description: "منصة حديثة لتأجير وإدارة الكتب، توفر اكتشاف الكتب واستئجارها وإدارتها، مع تسجيل دخول ولوحة تحكم للـAdmin. تم تطويرها كمشروع Full-Stack.",
+          tech: ["Next.js", "Express.js", "Node.js", "MongoDB"]
         },
         {
           title: "متجر آدا الإلكتروني",
-          description: "Ada Store هو متجر إلكتروني حديث تم تطويره باستخدام Angular، يوفر تصفح المنتجات والبحث وتسجيل الدخول وتجربة تسوق متجاوبة.",
-          tech: ["Angular 20", "TypeScript", "Tailwind CSS", "REST API", "Angular Signals"]
+          description: "متجر إلكتروني حديث تم تطويره باستخدام Angular، يوفر تصفح المنتجات والبحث وتسجيل الدخول وتجربة تسوق متجاوبة.",
+          tech: ["Angular 20", "Tailwind CSS", "Angular Signals", "REST API"]
         }
       ]
     },
