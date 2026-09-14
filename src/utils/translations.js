@@ -76,7 +76,7 @@ export const translations = {
       ]
     },
     skills: {
-      title: "Technical Arsenal",
+      title: "Technical Skills",
       subtitle: "A comprehensive suite of modern technologies and tools I utilize to craft premium digital experiences and scalable infrastructure.",
       categories: {
         frontend: "Frontend",
@@ -264,7 +264,7 @@ export const translations = {
       ]
     },
     skills: {
-      title: "ترسانتي التقنية",
+      title: "المهارات التقنية",
       subtitle: "مجموعة شاملة من التقنيات والأدوات الحديثة التي أستخدمها لإنشاء تجارب رقمية ممتازة وبنية تحتية برمجية قابلة للتوسع.",
       categories: {
         frontend: "الواجهات الأمامية",

@@ -1,7 +1,76 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Code, Server, Database } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+
+/* ─── parse "15+" → { number: 15, suffix: "+" } ─── */
+const parseStat = (value) => {
+  const match = String(value).match(/^(\d+(?:\.\d+)?)(.*)$/);
+  if (!match) return { number: 0, suffix: String(value) };
+  return { number: parseFloat(match[1]), suffix: match[2] };
+};
+
+/* ─── easing: ease-out cubic ─── */
+const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+/* ─── hook: count from 0 → target when element enters viewport ─── */
+const useCountUp = (target, duration = 1600) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const hasRun = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasRun.current) {
+          hasRun.current = true;
+          observer.disconnect();
+
+          const start = performance.now();
+          const tick = (now) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOut(progress);
+            setCount(Math.round(eased * target));
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return { ref, count };
+};
+
+/* ─── animated stat box ─── */
+const StatBox = ({ stat, delay }) => {
+  const { number, suffix } = parseStat(stat.value);
+  const { ref, count } = useCountUp(number);
+
+  return (
+    <motion.div
+      ref={ref}
+      className="stat-box glass-card"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay }}
+    >
+      <h4 className="text-gradient-blue">
+        {count}{suffix}
+      </h4>
+      <span>{stat.label}</span>
+    </motion.div>
+  );
+};
 
 const About = () => {
   const { t } = useApp();
@@ -42,17 +111,7 @@ const About = () => {
         {/* Stats */}
         <div className="stats-row">
           {Array.isArray(stats) && stats.map((stat, idx) => (
-            <motion.div
-              key={idx}
-              className="stat-box glass-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-            >
-              <h4 className="text-gradient-blue">{stat.value}</h4>
-              <span>{stat.label}</span>
-            </motion.div>
+            <StatBox key={idx} stat={stat} delay={idx * 0.1} />
           ))}
         </div>
 
