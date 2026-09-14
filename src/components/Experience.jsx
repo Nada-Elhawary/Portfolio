@@ -6,79 +6,85 @@ import { useApp } from '../context/AppContext';
 const Experience = () => {
   const { t } = useApp();
 
+  const experiences = t('experience.items');
+  const services    = t('experience.services');
+
   const serviceIcons = [
     <Layout size={26} />,
     <Smartphone size={26} />,
     <Server size={26} />,
     <PieChart size={26} />,
     <ShoppingCart size={26} />,
-    <Briefcase size={26} />
+    <Briefcase size={26} />,
   ];
-
-  const experiences = t('experience.items');
-  const services = t('experience.services');
 
   return (
     <section className="experience-section" id="experience">
       <div className="section-container">
-        
+
         <div className="exp-services-grid">
-          
-          {/* Experience Timeline */}
+
+          {/* ── Education & Training timeline (unchanged) ── */}
           <div className="experience-timeline">
-            <motion.h2 
+            <motion.h2
               className="section-title text-gradient heading-start"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
             >
               {t('experience.title')}
             </motion.h2>
-            
+
             <div className="timeline-container">
               {Array.isArray(experiences) && experiences.map((exp, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   className="timeline-item"
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.2 }}
+                  transition={{ delay: idx * 0.15, duration: 0.5 }}
                 >
-                  <div className="timeline-dot"></div>
+                  <div className="timeline-dot" />
                   <div className="timeline-content glass-card">
                     <span className="timeline-period text-gradient-blue">{exp.period}</span>
                     <h3 className="timeline-role">{exp.role}</h3>
                     <h4 className="timeline-company">{exp.company}</h4>
-                    <p className="timeline-desc">{exp.description}</p>
+                    {exp.description ? (
+                      <p className="timeline-desc">{exp.description}</p>
+                    ) : null}
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Services Offered */}
+          {/* ── Services ── */}
           <div className="services-container">
-            <motion.h2 
+            <motion.h2
               className="section-title text-gradient heading-start"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
             >
               {t('experience.servicesTitle')}
             </motion.h2>
 
             <div className="services-grid">
               {Array.isArray(services) && services.map((service, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   className="service-card glass-card"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
                 >
-                  <div className="service-icon">{serviceIcons[idx] || <Layout size={26} />}</div>
+                  <div className="service-icon">
+                    {serviceIcons[idx] || <Layout size={26} />}
+                  </div>
                   <h4 className="service-title">{service.title}</h4>
                   <p className="service-desc">{service.desc}</p>
                 </motion.div>
@@ -94,6 +100,8 @@ const Experience = () => {
           padding-top: 100px;
           position: relative;
         }
+
+        /* ── two-column grid ── */
         .exp-services-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -102,6 +110,8 @@ const Experience = () => {
         .heading-start {
           text-align: start;
         }
+
+        /* ── Education & Training timeline ── */
         .timeline-container {
           position: relative;
           padding-inline-start: 2rem;
@@ -120,6 +130,9 @@ const Experience = () => {
           position: relative;
           margin-bottom: 2.5rem;
         }
+        .timeline-item:last-child {
+          margin-bottom: 0;
+        }
         .timeline-dot {
           position: absolute;
           inset-inline-start: -2.4rem;
@@ -137,9 +150,9 @@ const Experience = () => {
           text-align: start;
         }
         .timeline-period {
-          font-size: 0.9rem;
+          font-size: 0.88rem;
           font-weight: 700;
-          letter-spacing: 1px;
+          letter-spacing: 0.5px;
           display: block;
           margin-bottom: 0.5rem;
         }
@@ -147,23 +160,26 @@ const Experience = () => {
           letter-spacing: 0;
         }
         .timeline-role {
-          font-size: 1.3rem;
+          font-size: 1.2rem;
           color: var(--text-primary);
-          margin-bottom: 0.2rem;
+          margin-bottom: 0.25rem;
           font-weight: 700;
+          line-height: 1.4;
         }
         .timeline-company {
           font-size: 0.95rem;
           color: var(--text-secondary);
           font-weight: 500;
-          margin-bottom: 1rem;
+          margin-bottom: 0.85rem;
         }
         .timeline-desc {
           color: var(--text-secondary);
           line-height: 1.7;
-          font-size: 0.95rem;
+          font-size: 0.93rem;
+          margin-top: 0;
         }
 
+        /* ── Services ── */
         .services-container {
           margin-top: 0;
         }
@@ -207,6 +223,7 @@ const Experience = () => {
           line-height: 1.6;
         }
 
+        /* ── Responsive ── */
         @media (max-width: 1024px) {
           .exp-services-grid {
             grid-template-columns: 1fr;
@@ -216,6 +233,15 @@ const Experience = () => {
         @media (max-width: 600px) {
           .services-grid {
             grid-template-columns: 1fr;
+          }
+          .timeline-container {
+            padding-inline-start: 1.5rem;
+          }
+          .timeline-dot {
+            inset-inline-start: -1.9rem;
+          }
+          .timeline-role {
+            font-size: 1.05rem;
           }
         }
       `}</style>

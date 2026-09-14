@@ -14,23 +14,65 @@ export const translations = {
       role: "Full Stack MEARN Developer",
       intro: "Crafting elegant, high-performance web applications with a focus on modern UI/UX and scalable backend architectures. I turn complex problems into beautiful digital solutions.",
       ctaProjects: "View Projects",
-      ctaContact: "Contact Me"
+      ctaContact: "Contact Me",
+      ctaDownloadCV: "Download CV"
     },
     about: {
       title: "About Me",
-      subtitle: "I am a passionate Senior Full Stack Developer specializing in the MERN stack. I build robust, scalable architectures and design pixel-perfect, engaging user interfaces.",
+      subtitle: "I am a passionate Junior Full Stack Developer specializing in the MERN stack. I build robust, scalable architectures and design pixel-perfect, engaging user interfaces.",
       journeyTitle: "My Journey",
+      journeySubTitle: "From curiosity to code.",
       journeyText1: "With a deep-rooted passion for software engineering, I've spent over 3 years perfecting the art of building full-scale web applications. My expertise lies in bridging the gap between design and complex backend systems, creating seamless digital experiences.",
       journeyText2: "I thrive in high-paced environments, architecting solutions that scale to millions of users while maintaining clean, maintainable codebases using modern technologies like TypeScript and Next.js.",
+      journey: {
+        title: "My Journey",
+        tagline: "From curiosity to code.",
+        supporting: "A journey that started with a small step, and continues to unfold.",
+        milestones: [
+          {
+            year: "2021",
+            title: "The Beginning",
+            description: "These were my first steps into the world of technology, where I started discovering programming and web development."
+          },
+          {
+            year: "2023",
+            title: "Learning to Think",
+            description: "Through problem-solving and programming challenges, I began to understand that programming is not just about writing code, but about learning how to approach problems and find solutions."
+          },
+          {
+            year: "2024",
+            title: "Finding My Path",
+            description: "My interest in web development started to grow, and I began exploring frontend development more deeply, learning Angular and modern web development tools."
+          },
+          {
+            year: "2025",
+            title: "Taking Bigger Steps",
+            description: "I graduated from the Faculty of Computers & Information while continuing to develop my skills and build projects that helped me turn what I learned into something real."
+          },
+          {
+            year: "2026",
+            title: "From Frontend to Full-Stack",
+            description: "ITI became one of the most important milestones in my journey. During six months of intensive learning and teamwork, I experienced an environment closer to real-world development and expanded my knowledge from frontend to backend and AI.\n\nEduGenie was one of the biggest challenges I worked on, where I collaborated with my team to build a real full-stack product using Angular, NestJS, and MongoDB, with AI-powered features.",
+            highlight: "EduGenie"
+          },
+          {
+            year: "Today",
+            title: "Still Building",
+            description: "Today, I'm at the beginning of a new chapter, continuing to grow as a Full-Stack Web Developer, constantly learning, building new projects, and turning ideas into experiences people can actually use.",
+            closing: "My journey isn't over...\n\nI'm just writing the next chapter.",
+            isCurrent: true
+          }
+        ]
+      },
       stats: [
         { value: "3+", label: "Years Experience" },
         { value: "15+", label: "Projects Completed" },
         { value: "10+", label: "Tech Mastered" }
       ],
       highlights: [
-        { title: "Frontend", desc: "React, Next.js, Angular, TypeScript" },
-        { title: "Backend", desc: "Node.js, Express.js, Nest.js" },
-        { title: "Database", desc: "MongoDB, PostgreSQL, MySQL" }
+        { title: "Frontend", desc: "React, Next.js, Angular, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS" },
+        { title: "Backend", desc: "Node.js, Express.js, Nest.js, GraphQL" },
+        { title: "Database", desc: "MongoDB, MongoDB Atlas" }
       ]
     },
     skills: {
@@ -50,43 +92,43 @@ export const translations = {
       sourceCode: "Source Code",
       items: [
         {
-          title: "Aura AI Dashboard",
-          description: "An advanced AI analytics dashboard that processes millions of data points in real-time. Features dark-mode immersive UI, complex data visualization, and predictive modeling interfaces.",
-          tech: ["React", "Next.js", "TypeScript", "Tailwind", "Recharts", "Node.js"]
+          title: "EduGenie",
+          description: "EduGenie is an AI-powered e-learning platform built to provide a smarter and more personalized learning experience. The platform brings together course management, interactive quizzes, progress tracking, certifications, and AI-powered learning features in one integrated system.\n\nDeveloped as a full-stack team project, EduGenie was designed to turn traditional online learning into a more engaging and adaptive experience.",
+          tech: ["Angular 20", "Next.js", "NestJS", "TypeScript", "MongoDB", "Cloudinary", "Stripe", "AI/RAG"]
         },
         {
-          title: "Nexus E-Commerce",
-          description: "A headless e-commerce platform built for maximum performance and conversion. Includes a seamless checkout experience, global state management, and an integrated admin CMS.",
-          tech: ["MERN Stack", "Redux Toolkit", "Stripe", "Framer Motion"]
+          title: "NexusBooks",
+          description: "NexusBooks is a modern book rental platform designed to make discovering, renting, and managing books simple and seamless. It includes user authentication, book browsing, rental management, and an admin dashboard.",
+          tech: ["Next.js", "Express.js", "Node.js", "MongoDB", "Mongoose", "JWT", "REST API"]
         },
         {
-          title: "Orbit Finance",
-          description: "A decentralized finance tracking app featuring real-time crypto markets, secure authentication, and a stunning glassmorphism interface with subtle neon aesthetics.",
-          tech: ["React", "Web3.js", "Express", "MongoDB", "Socket.io"]
+          title: "Ada Store — E-Commerce",
+          description: "Ada Store is a modern e-commerce frontend built with Angular, featuring product browsing, search, authentication, and a responsive shopping experience.",
+          tech: ["Angular 20", "TypeScript", "Tailwind CSS", "REST API", "Angular Signals"]
         }
       ]
     },
     experience: {
-      title: "Experience",
+      title: "Education & Training",
       servicesTitle: "Services",
       items: [
         {
-          role: "Senior Full Stack Developer",
-          company: "TechNova Solutions",
-          period: "2022 - Present",
-          description: "Lead a team of 5 developers in architecting a high-traffic scalable SaaS platform using Next.js, Node.js, and MongoDB."
+          role: "B.Sc. in Computer Science",
+          company: "Faculty of Computers & Information, South Valley University",
+          period: "2021 – 2025 | Qena, Egypt",
+          description: ""
         },
         {
-          role: "Frontend Engineer",
-          company: "PixelPerfect Agency",
-          period: "2019 - 2022",
-          description: "Developed premium Awwwards-winning interactive websites. Spearheaded the adoption of React and Framer Motion across all client projects."
+          role: "Intensive Training Program — Full-Stack Web & Generative AI Development using MEARN",
+          company: "Information Technology Institute (ITI)",
+          period: "01/2026 – 06/2026 | Qena, Egypt",
+          description: "Covered: Full-Stack Web Development, MongoDB, Express.js, Angular, React, Node.js, JavaScript, TypeScript, REST APIs, Generative AI, and real-world web projects."
         },
         {
-          role: "Junior Web Developer",
-          company: "Startup Incubator",
-          period: "2017 - 2019",
-          description: "Built responsive single-page applications and RESTful APIs for emerging startups, focusing on performance and SEO."
+          role: "Front-End Development Summer Training",
+          company: "Information Technology Institute (ITI)",
+          period: "08/2023 – 09/2023 | Qena, Egypt",
+          description: "Covered: HTML5, CSS3, Responsive Web Design, Bootstrap 5, JavaScript, TypeScript, Angular, and Flutter fundamentals."
         }
       ],
       services: [
@@ -161,7 +203,8 @@ export const translations = {
       role: "مطور ويب متكامل MEARN",
       intro: "أقوم ببناء تطبيقات ويب أنيقة وعالية الأداء مع التركيز على واجهات المستخدم الحديثة وبنى الأنظمة القابلة للتوسع. أحول المشكلات المعقدة إلى حلول رقمية رائعة.",
       ctaProjects: "عرض المشاريع",
-      ctaContact: "تواصل معي"
+      ctaContact: "تواصل معي",
+      ctaDownloadCV: "تحميل السيرة الذاتية"
     },
     about: {
       title: "من أنا",
@@ -169,6 +212,46 @@ export const translations = {
       journeyTitle: "مسيرتي المهنية",
       journeyText1: "مع شغف عميق بهندسة البرمجيات، قضيت أكثر من 3 سنوات في إتقان بناء تطبيقات الويب المتكاملة. تكمن خبرتي في سد الفجوة بين التصميم والأنظمة الخلفية المعقدة، وتقديم تجارب رقمية سلسة وممتازة.",
       journeyText2: "أتميز بالعمل في البيئات السريعة والنشطة، حيث أقوم بابتكار وتصميم حلول برمجية تتوسع لتخدم ملايين المستخدمين مع الحفاظ على كود نظيف وقابل للصيانة باستخدام أحدث التقنيات مثل TypeScript و Next.js.",
+      journey: {
+        title: "My Journey",
+        tagline: "من الفضول إلى الكود.",
+        supporting: "رحلة بدأت بخطوة صغيرة، وما زالت مستمرة.",
+        milestones: [
+          {
+            year: "2021",
+            title: "البداية",
+            description: "كانت أول خطواتي في عالم التكنولوجيا، ومن هنا بدأت أكتشف عالم البرمجة وتطوير الويب."
+          },
+          {
+            year: "2023",
+            title: "تعلُّم طريقة التفكير",
+            description: "مع الـProblem Solving والتحديات البرمجية، بدأت أفهم أن البرمجة ليست مجرد كتابة كود، بل طريقة مختلفة للتفكير في المشكلات وحلها."
+          },
+          {
+            year: "2024",
+            title: "اكتشاف طريقي",
+            description: "بدأ اهتمامي بتطوير الويب يكبر، وبدأت أتعمق أكثر في الـFrontend وأتعلم Angular وأدوات تطوير الويب الحديثة."
+          },
+          {
+            year: "2025",
+            title: "خطوات أكبر",
+            description: "تخرجت من كلية الحاسبات والمعلومات، وفي نفس الوقت واصلت تطوير مهاراتي وبناء مشاريع تساعدني على تحويل ما أتعلمه إلى شيء حقيقي."
+          },
+          {
+            year: "2026",
+            title: "من الـFrontend إلى الـFull-Stack",
+            description: "كانت ITI واحدة من أهم محطات رحلتي. خلال ستة أشهر من التعلم والعمل الجماعي، خضت تجربة أقرب لبيئة العمل الحقيقية، وتوسعت معرفتي من الـFrontend إلى الـBackend والـAI.\n\nوكان EduGenie من أكبر التحديات التي خضتها، حيث عملت مع فريقي على بناء منتج Full-Stack حقيقي باستخدام Angular وNestJS وMongoDB، مع دمج تقنيات الذكاء الاصطناعي.",
+            highlight: "EduGenie"
+          },
+          {
+            year: "اليوم",
+            title: "ما زلت أبني",
+            description: "اليوم أنا في بداية مرحلة جديدة، أعمل على تطوير نفسي كمطورة Full-Stack Web Developer، وأتعلم باستمرار، وأبني مشاريع جديدة، وأحوّل الأفكار إلى تجارب حقيقية يمكن للناس استخدامها.",
+            closing: "رحلتي لم تنتهِ بعد...\nأنا فقط أكتب فصلها القادم.",
+            isCurrent: true
+          }
+        ]
+      },
       stats: [
         { value: "3+", label: "سنوات خبرة عملية" },
         { value: "15+", label: "مشاريع مكتملة" },
@@ -197,43 +280,43 @@ export const translations = {
       sourceCode: "كود المشروع",
       items: [
         {
-          title: "لوحة تحكم Aura الذكية",
-          description: "لوحة تحكم متطورة لتحليلات الذكاء الاصطناعي تعالج ملايين البيانات في الوقت الفعلي. تتميز بواجهة مستخدم غامرة تدعم الوضع الداكن وتصور البيانات المعقدة ونماذج التنبؤ.",
-          tech: ["React", "Next.js", "TypeScript", "Tailwind", "Recharts", "Node.js"]
+          title: "منصة جن التعلم الإلكترونية الذكية",
+          description: "EduGenie هي منصة تعليم إلكتروني مدعومة بالذكاء الاصطناعي، تم تطويرها لتقديم تجربة تعلم أكثر ذكاءً وتخصيصًا. تجمع المنصة بين إدارة الكورسات، والاختبارات التفاعلية، ومتابعة التقدم، والشهادات، وميزات التعلم المدعومة بالذكاء الاصطناعي في نظام متكامل.\n\nتم تطوير EduGenie كمشروع Full-Stack جماعي، بهدف تحويل تجربة التعلم الإلكتروني التقليدية إلى تجربة أكثر تفاعلية ومرونة وتكيفًا مع احتياجات المتعلم.",
+          tech: ["Angular 20", "Next.js", "NestJS", "TypeScript", "MongoDB", "Cloudinary", "Stripe", "AI/RAG"]
         },
         {
-          title: "منصة نكسس للتجارة الإلكترونية",
-          description: "منصة تجارة إلكترونية متطورة (Headless) مصممة لتحقيق أقصى قدر من الأداء ومعدلات التحويل. تتضمن تجربة دفع سلسة وإدارة عامة للحالة ولوحة تحكم متكاملة للإدارة.",
-          tech: ["MERN Stack", "Redux Toolkit", "Stripe", "Framer Motion"]
+          title: "منصة نكسس لتأجير وإدارة الكتب",
+          description: "NexusBooks هي منصة حديثة لتأجير الكتب، مصممة لتوفير تجربة سهلة وسلسة لاكتشاف الكتب واستئجارها وإدارتها. تتضمن تسجيل دخول المستخدمين، وتصفح الكتب، وإدارة عمليات التأجير، ولوحة تحكم للـAdmin.",
+          tech: ["Next.js", "Express.js", "Node.js", "MongoDB", "Mongoose", "JWT", "REST API"]
         },
         {
-          title: "أوربت للمالية",
-          description: "تطبيق لا مركزي لتتبع الشؤون المالية يتميز بأسواق العملات الرقمية في الوقت الفعلي ومصادقة آمنة وواجهة زجاجية مذهلة (Glassmorphism) مع لمسات جمالية نيون مميزة.",
-          tech: ["React", "Web3.js", "Express", "MongoDB", "Socket.io"]
+          title: "متجر آدا الإلكتروني",
+          description: "Ada Store هو متجر إلكتروني حديث تم تطويره باستخدام Angular، يوفر تصفح المنتجات والبحث وتسجيل الدخول وتجربة تسوق متجاوبة.",
+          tech: ["Angular 20", "TypeScript", "Tailwind CSS", "REST API", "Angular Signals"]
         }
       ]
     },
     experience: {
-      title: "الخبرة المهنية",
+      title: "التعليم والتدريب",
       servicesTitle: "الخدمات",
       items: [
         {
-          role: "مطور ويب متكامل أول",
-          company: "تكنوفا للحلول الرقمية",
-          period: "2022 - الآن",
-          description: "قيادة فريق من 5 مطورين في تصميم وهندسة منصة سحابية (SaaS) عالية حركة المرور وقابلة للتوسع باستخدام Next.js و Node.js و MongoDB."
+          role: "بكالوريوس علوم الحاسب",
+          company: "كلية الحاسبات والمعلومات، جامعة جنوب الوادي",
+          period: "2021 – 2025 | قنا، مصر",
+          description: ""
         },
         {
-          role: "مهندس واجهات أمامية",
-          company: "وكالة بيكسل بيرفكت",
-          period: "2019 - 2022",
-          description: "تطوير مواقع ويب تفاعلية متميزة وحائزة على جوائز Awwwards. قيادة اعتماد React و Framer Motion في جميع مشاريع العملاء."
+          role: "برنامج التدريب المكثف — تطوير الويب Full-Stack والذكاء الاصطناعي التوليدي باستخدام MEARN",
+          company: "معهد تكنولوجيا المعلومات (ITI)",
+          period: "01/2026 – 06/2026 | قنا، مصر",
+          description: "شمل التدريب: تطوير الويب Full-Stack، MongoDB، Express.js، Angular، React، Node.js، JavaScript، TypeScript، REST APIs، الذكاء الاصطناعي التوليدي، ومشاريع ويب عملية تحاكي بيئة العمل الحقيقية."
         },
         {
-          role: "مطور ويب مبتدئ",
-          company: "حاضنة الأعمال الناشئة",
-          period: "2017 - 2019",
-          description: "بناء تطبيقات الصفحة الواحدة سريعة الاستجابة وواجهات برمجة التطبيقات (RESTful APIs) للشركات الناشئة، مع التركيز على الأداء الأمثل وتحسين محركات البحث (SEO)."
+          role: "التدريب الصيفي في تطوير Front-End",
+          company: "معهد تكنولوجيا المعلومات (ITI)",
+          period: "08/2023 – 09/2023 | قنا، مصر",
+          description: "شمل التدريب: HTML5، CSS3، تصميم الويب المتجاوب، Bootstrap 5، JavaScript، TypeScript، Angular، وأساسيات Flutter."
         }
       ],
       services: [

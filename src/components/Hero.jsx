@@ -115,6 +115,14 @@ const Hero = () => {
                 <ArrowRight size={18} style={{ transform: isRtl ? 'rotate(180deg)' : 'none' }} />
               </motion.span>
             </a>
+            <a
+              href="/Nada_Elhawary_CV (2).pdf"
+              download="Nada-Elhawary-CV.pdf"
+              className="btn-primary hero-cv-btn"
+            >
+              <Download size={17} />
+              {t('hero.ctaDownloadCV')}
+            </a>
             <a href="#contact" className="btn-secondary">
               {t('hero.ctaContact')}
             </a>
@@ -248,6 +256,12 @@ const Hero = () => {
         .hero-ctas {
           display: flex;
           gap: 1.2rem;
+          flex-wrap: wrap;
+        }
+        .hero-cv-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
         }
         .hero-image-container {
           flex: 1;

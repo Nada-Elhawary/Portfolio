@@ -5,19 +5,19 @@ import { useApp } from '../context/AppContext';
 
 const projectMeta = [
   {
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000',
-    liveLink: '#',
-    githubLink: '#'
+    image: '/EduGenie.png',
+    liveLink: 'https://edugenie-student-web.vercel.app',
+    githubLink: 'https://github.com/Nada-Elhawary/edugenie-student-web'
   },
   {
-    image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=1000',
-    liveLink: '#',
-    githubLink: '#'
+    image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200&auto=format&fit=crop',
+    liveLink: 'https://book-store-dashboard-gamma.vercel.app',
+    githubLink: 'https://github.com/Nada-Elhawary/Book_Store'
   },
   {
-    image: 'https://images.unsplash.com/photo-1639762681485-074b7f4ec651?auto=format&fit=crop&q=80&w=1000',
-    liveLink: '#',
-    githubLink: '#'
+    image: '/AdaStore.png',
+    liveLink: 'https://ada-store-five.vercel.app',
+    githubLink: 'https://github.com/Nada-Elhawary/Ada-Store'
   }
 ];
 

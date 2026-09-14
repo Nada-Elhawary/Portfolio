@@ -17,7 +17,7 @@ const Contact = () => {
     setStatus({ submitting: true, success: false, error: null });
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/nada.elhawaryy3@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/nada.elhawary.dev@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -80,9 +80,9 @@ const Contact = () => {
             </p>
             
             <div className="social-links">
-              <a href="mailto:nada.elhawaryy3@gmail.com" className="social-link">
+              <a href="mailto:nada.elhawary.dev@gmail.com" className="social-link">
                 <div className="social-icon"><Mail size={18} /></div>
-                <span>nada.elhawaryy3@gmail.com</span>
+                <span>nada.elhawary.dev@gmail.com</span>
               </a>
               <a href="https://github.com/Nada-Elhawary" target="_blank" rel="noreferrer" className="social-link">
                 <div className="social-icon"><Code size={18} /></div>

@@ -9,7 +9,7 @@ const skillCategories = [
   },
   {
     titleKey: 'skills.categories.backend',
-    skills: ['Node.js', 'Express.js', 'NestJS', 'GraphQL', 'REST API', 'WebSockets']
+    skills: ['Node.js', 'Express.js', 'NestJS', 'GraphQL', 'REST API']
   },
   {
     titleKey: 'skills.categories.database',
@@ -17,7 +17,7 @@ const skillCategories = [
   },
   {
     titleKey: 'skills.categories.tools',
-    skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Figma', 'Linux']
+    skills: ['Git', 'GitHub', 'Docker', 'Postman', 'Figma', 'Vercel', 'Cloudinary']
   }
 ];
 
