@@ -247,20 +247,26 @@ const Projects = () => {
             display: flex;
             gap: 0.75rem;
             margin-top: 1.5rem;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;        /* keep buttons on one row */
           }
           .card-action-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
-            padding: 9px 18px;
+            flex: 1;                  /* equal width, fills row */
+            min-width: 0;             /* allow shrinking below content size */
+            padding: 9px 10px;
             border-radius: 24px;
             font-size: 0.875rem;
             font-weight: 600;
-            border: 1px solid rgba(59, 130, 246, 0.35);
-            color: var(--accent-light);
-            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid var(--accent-primary);
+            color: white;
+            background: var(--accent-primary);
             transition: var(--transition-smooth);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
           html[lang="ar"] .card-action-btn {
             font-family: 'Cairo', sans-serif;
@@ -268,9 +274,9 @@ const Projects = () => {
           }
           .card-action-btn:hover,
           .card-action-btn:active {
-            background: var(--accent-primary);
-            border-color: var(--accent-primary);
-            color: white;
+            background: rgba(59, 130, 246, 0.08);
+            border-color: rgba(59, 130, 246, 0.35);
+            color: var(--accent-light);
             box-shadow: 0 0 12px var(--accent-glow);
           }
           [data-theme="light"] .card-action-btn {
@@ -282,6 +288,21 @@ const Projects = () => {
           /* Hide the hover overlay on touch screens — no hover available */
           .project-overlay {
             display: none;
+          }
+        }
+
+        /* extra tightening at very narrow widths */
+        @media (max-width: 430px) {
+          .project-content {
+            padding: 1.25rem;
+          }
+          .card-action-btn {
+            font-size: 0.8rem;
+            padding: 8px 8px;
+            gap: 4px;
+          }
+          .card-action-btn svg {
+            flex-shrink: 0;
           }
         }
       `}</style>

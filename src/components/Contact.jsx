@@ -240,6 +240,12 @@ const Contact = () => {
           gap: 1rem;
           color: var(--text-secondary);
           transition: var(--transition-smooth);
+          min-width: 0;
+        }
+        .social-link span {
+          overflow-wrap: break-word;
+          word-break: break-all;
+          min-width: 0;
         }
         .social-link:hover {
           color: var(--accent-light);
@@ -385,6 +391,17 @@ const Contact = () => {
           }
           .contact-info, .contact-form-container {
             padding: 2rem;
+          }
+        }
+        @media (max-width: 430px) {
+          .contact-info, .contact-form-container {
+            padding: 1.25rem;
+          }
+          .contact-info h3 {
+            font-size: 1.5rem;
+          }
+          .social-icon {
+            flex-shrink: 0;
           }
         }
       `}</style>

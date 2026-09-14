@@ -217,8 +217,7 @@ html[lang="ar"] .btn-secondary {
 /* prevent any child from blowing out the viewport width */
 @media (max-width: 640px) {
   .section-container {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 25px 16px;
     width: 100%;
     box-sizing: border-box;
   }

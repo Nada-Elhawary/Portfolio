@@ -149,6 +149,8 @@ const About = () => {
           grid-template-columns: repeat(3, 1fr);
           gap: 1.5rem;
           max-width: 680px;
+          width: 100%;
+          box-sizing: border-box;
           margin: 0 auto 1.5rem;
         }
         .stat-box {
@@ -200,16 +202,55 @@ const About = () => {
         .highlight-info span {
           color: var(--text-secondary);
           font-size: 0.95rem;
+          overflow-wrap: break-word;
+          word-break: break-word;
         }
         @media (max-width: 600px) {
           .stats-row {
-            gap: 0.75rem;
+            gap: 0.5rem;
+            width: 100%;
           }
           .stat-box {
-            padding: 1.25rem 0.5rem;
+            padding: 1.1rem 0.4rem;
+            min-width: 0;
           }
           .stat-box h4 {
-            font-size: 1.6rem;
+            font-size: 1.45rem;
+          }
+          .stat-box span {
+            font-size: 0.72rem;
+            letter-spacing: 0;
+            overflow-wrap: break-word;
+            word-break: break-word;
+          }
+          .highlight-box {
+            padding: 1rem;
+            gap: 0.85rem;
+          }
+          .highlight-icon {
+            padding: 10px;
+            flex-shrink: 0;
+          }
+          .highlight-info h5 {
+            font-size: 1rem;
+          }
+          .highlight-info span {
+            font-size: 0.85rem;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .stats-row {
+            gap: 0.35rem;
+          }
+          .stat-box {
+            padding: 0.9rem 0.25rem;
+          }
+          .stat-box h4 {
+            font-size: 1.3rem;
+          }
+          .stat-box span {
+            font-size: 0.68rem;
           }
         }
       `}</style>
