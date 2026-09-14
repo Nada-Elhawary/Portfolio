@@ -27,7 +27,7 @@ const Experience = () => {
           {/* ── Education & Training timeline (unchanged) ── */}
           <div className="experience-timeline">
             <motion.h2
-              className="section-title text-gradient heading-start"
+              className="section-title text-gradient"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -63,7 +63,7 @@ const Experience = () => {
           {/* ── Services ── */}
           <div className="services-container">
             <motion.h2
-              className="section-title text-gradient heading-start"
+              className="section-title text-gradient"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -106,9 +106,6 @@ const Experience = () => {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 4rem;
-        }
-        .heading-start {
-          text-align: start;
         }
 
         /* ── Education & Training timeline ── */
