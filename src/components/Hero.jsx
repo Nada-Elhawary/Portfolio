@@ -116,7 +116,7 @@ const Hero = () => {
               </motion.span>
             </a>
             <a
-              href="/Nada_Elhawary_CV (2).pdf"
+              href="/Nada_Elhawary_Full-Stack_CV.pdf"
               download="Nada-Elhawary-CV.pdf"
               className="btn-secondary hero-cv-btn"
             >
