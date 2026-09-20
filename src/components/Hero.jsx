@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
-import { FaReact, FaNodeJs, FaAngular } from 'react-icons/fa';
-import { SiMongodb, SiExpress } from 'react-icons/si';
+import { FaReact, FaAngular, FaHtml5 } from 'react-icons/fa';
+import { SiTypescript, SiTailwindcss } from 'react-icons/si';
 import { useApp } from '../context/AppContext';
 
 const Hero = () => {
@@ -12,13 +12,12 @@ const Hero = () => {
   const [charIdx, setCharIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // High-end titles for typewriter effect
-  const roles = language === 'en' 
-    ? ["Full Stack MEARN Developer", "Creative UI/UX Designer", "Scalable Systems Architect"]
-    : ["مطورة ويب متكامل MEARN", "مصممة واجهات وتجربة مستخدم", "مهندسة أنظمة برمجية متكاملة"];
+  // Typewriter roles — all front-end focused
+  const roles = language === 'en'
+    ? ['Junior Front-End Developer', 'Angular & React Specialist', 'Responsive UI Builder']
+    : ['مطورة واجهات أمامية', 'متخصصة في Angular وReact', 'مطورة واجهات متجاوبة'];
 
   useEffect(() => {
-    // Reset index when language changes
     setRoleIdx(0);
     setCharIdx(0);
     setRoleText('');
@@ -116,7 +115,7 @@ const Hero = () => {
               </motion.span>
             </a>
             <a
-              href="/Nada_Elhawary_Full-Stack_CV.pdf"
+              href="/Nada_Elhawary_Front-End_CV.pdf"
               download="Nada-Elhawary-CV.pdf"
               className="btn-secondary hero-cv-btn"
             >
@@ -141,7 +140,7 @@ const Hero = () => {
               <img src="/me.JPG" className="profile-photo" alt={t('hero.name')} />
             </div>
 
-            {/* Floating Badges */}
+            {/* Floating tech badges — all front-end */}
             <motion.div
               className="floating-badge badge-react glass"
               animate={{ y: [0, -10, 0] }}
@@ -150,32 +149,32 @@ const Hero = () => {
               <FaReact size={24} />
             </motion.div>
             <motion.div
-              className="floating-badge badge-node glass"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
-            >
-              <FaNodeJs size={24} />
-            </motion.div>
-            <motion.div
-              className="floating-badge badge-mongo glass"
-              animate={{ y: [0, -15, 0] }}
-              transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.5 }}
-            >
-              <SiMongodb size={24} />
-            </motion.div>
-            <motion.div
-              className="floating-badge badge-express glass"
-              animate={{ y: [0, -12, 0] }}
-              transition={{ repeat: Infinity, duration: 3.2, ease: "easeInOut", delay: 0.2 }}
-            >
-              <SiExpress size={24} />
-            </motion.div>
-            <motion.div
               className="floating-badge badge-angular glass"
               animate={{ y: [0, 12, 0] }}
               transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut", delay: 0.7 }}
             >
               <FaAngular size={24} />
+            </motion.div>
+            <motion.div
+              className="floating-badge badge-ts glass"
+              animate={{ y: [0, -15, 0] }}
+              transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.5 }}
+            >
+              <SiTypescript size={22} />
+            </motion.div>
+            <motion.div
+              className="floating-badge badge-html glass"
+              animate={{ y: [0, -12, 0] }}
+              transition={{ repeat: Infinity, duration: 3.2, ease: "easeInOut", delay: 0.2 }}
+            >
+              <FaHtml5 size={24} />
+            </motion.div>
+            <motion.div
+              className="floating-badge badge-tailwind glass"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
+            >
+              <SiTailwindcss size={22} />
             </motion.div>
           </div>
         </motion.div>
@@ -331,11 +330,11 @@ const Hero = () => {
           justify-content: center;
           box-shadow: var(--glass-shadow);
         }
-        .badge-react { top: 10%; inset-inline-start: -5%; color: #61dafb; border-color: rgba(97, 218, 251, 0.3); }
-        .badge-node { bottom: 15%; inset-inline-end: -5%; color: #339933; border-color: rgba(51, 153, 51, 0.3); }
-        .badge-mongo { bottom: 5%; inset-inline-start: 5%; color: #47a248; border-color: rgba(71, 162, 72, 0.3); }
-        .badge-express { top: 25%; inset-inline-end: -8%; color: var(--text-primary); border-color: var(--glass-border); }
-        .badge-angular { top: -5%; inset-inline-end: 25%; color: #dd0031; border-color: rgba(221, 0, 49, 0.3); }
+        .badge-react   { top: 10%;  inset-inline-start: -5%;  color: #61dafb; border-color: rgba(97, 218, 251, 0.3); }
+        .badge-angular { top: -5%;  inset-inline-end: 25%;   color: #dd0031; border-color: rgba(221, 0, 49, 0.3); }
+        .badge-ts      { bottom: 5%; inset-inline-start: 5%;  color: #3178c6; border-color: rgba(49, 120, 198, 0.3); }
+        .badge-html    { top: 25%;  inset-inline-end: -8%;   color: #e44d26; border-color: rgba(228, 77, 38, 0.3); }
+        .badge-tailwind{ bottom: 15%; inset-inline-end: -5%; color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); }
 
         @keyframes blink {
           from, to { color: transparent }
