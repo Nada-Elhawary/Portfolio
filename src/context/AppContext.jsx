@@ -32,11 +32,11 @@ export const AppProvider = ({ children }) => {
 
     // Update Title & Description
     const titleText = language === 'en' 
-      ? 'Nada Elhawary | Full Stack MEARN Developer Portfolio' 
-      : 'ندى الهواري | معرض أعمال مطور ويب متكامل MEARN';
+      ? 'Nada Elhawary | Junior Front-End Developer Portfolio' 
+      : 'ندى الهواري | معرض أعمال مطور ويب واجهة أمامية';
     const descText = language === 'en'
-      ? 'Portfolio of Nada Elhawary, Full Stack MEARN Developer specializing in React, Angular, Node.js, Express, MongoDB, and modern SaaS UI/UX architectures.'
-      : 'معرض أعمال ندى الهواري، مطور ويب متكامل متخصص في تقنيات MEARN (React, Angular, Node.js, Express, MongoDB) وبنى واجهات المستخدم الحديثة.';
+      ? 'Portfolio of Nada Elhawary, Junior Front-End Developer specializing in React, Angular, Node.js, Express, MongoDB, and modern SaaS UI/UX architectures.'
+      : 'معرض أعمال ندى الهواري، مطور ويب واجهة أمامية متخصص في تقنيات (React, Angular, Next.JS, TypeScript) وبنى واجهات المستخدم الحديثة.';
 
     document.title = titleText;
 
@@ -76,7 +76,7 @@ export const AppProvider = ({ children }) => {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": language === 'en' ? 'Nada Elhawary' : 'ندى الهواري',
-      "jobTitle": language === 'en' ? 'Full Stack MEARN Developer' : 'مطور ويب متكامل MEARN',
+      "jobTitle": language === 'en' ? 'Junior Front-End Developer' : 'مطور ويب واجهات أمامية',
       "url": window.location.origin,
       "sameAs": [
         "https://github.com/Nada-Elhawary",

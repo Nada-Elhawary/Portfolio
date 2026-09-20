@@ -1,6 +1,6 @@
 # Nada Elhawary — Developer Portfolio
 
-A personal portfolio website for Nada Elhawary, Full Stack MEARN Developer. Built with React and Vite, it presents skills, projects, education, and contact information in a bilingual (English / Arabic), theme-aware single-page application.
+A personal portfolio website for Nada Elhawary, Junior Front-End Developer. Built with React and Vite, it presents skills, projects, education, and contact information in a bilingual (English / Arabic), theme-aware single-page application.
 
 ---
 
